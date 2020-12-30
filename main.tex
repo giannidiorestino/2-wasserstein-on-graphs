@@ -9,7 +9,7 @@
 \title{2-Wasserstein on a graph}
 
 \author{Giovanni Pistone}
-\address{Collegio Carlo Alberto}
+\address{de Castro Statistics, Collegio Carlo Alberto, Torino}
 
 \date{\today}
 
@@ -31,19 +31,19 @@ also called \emph{vector fields}. Both this special cases are uniquely
 characterised by their restriction on either $\overrightarrow E$ or
 $\overleftarrow E$.
 
-For each given weight $\theta$ on $G$, that is, $\theta(x,y) \geq 0$ and
-$\theta(x,y) = 0$ if $\omega(x,y) = 0$, we define the  inner product $\scalarat \theta \cdot \cdot$
-for $a,b \in M(G)$ by
+For each given weight $\theta$ on $G$, that is, $\theta(x,y) \geq 0$
+and $\theta(x,y) = 0$ if $\omega(x,y) = 0$, we define the \emph{inner
+  product} $\scalarat \theta \cdot \cdot$ for $a,b \in M(G)$ by
 \begin{multline*}
-  \scalarat \theta a b = \frac 12 \sum _ {x,y \in V} 
-  a(x,y) b(x,y)\theta(x,y) = \frac 12 \sum _ {E(x,y)=1} a(x,y)
-  b(x,y)\theta(x,y) = \\ \sum_{xy \in \overrightarrow E} 
-  \frac12(a(x,y)b(x,y)+a(y,x)b(y,x)) \theta(x,y)\ . 
+  \scalarat \theta a b = \frac 12 \sum _ {x,y \in V} a(x,y)
+  b(x,y)\theta(x,y) = \frac 12 \sum _ {E(x,y)=1} a(x,y)
+  b(x,y)\theta(x,y) = \\ \sum_{\overrightarrow E(x,y)=1}
+  \frac12(a(x,y)b(x,y)+a(y,x)b(y,x)) \theta(x,y)\ .
 \end{multline*}
 
 If $a$ and $b$ are either both symmetric, or both skew-symmetric, then
 \begin{equation*}
-  \scalarat \theta a b = \sum_{xy \in \overrightarrow E}
+  \scalarat \theta a b = \sum_{\overrightarrow E(x,y)=1}
   a(x,y)b(x,y) \theta(x,y) \ .
 \end{equation*}
 If $a$ and $b$ are one symmetric and the other skew-symmetric, then
@@ -58,21 +58,21 @@ can map potentials into vector fields by the operation of
   \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y)) \ , \quad
   x,y \in V \ .
 \end{equation*}
-The meaning of the square rooth will be explained later.
+The meaning of the square rooth will be explained later. As the graph
+$G$ is connected, it holds $\ker \nabla = \reals \one$.
 
-As the graph $G$ is connected, it holds $\ker \nabla = \reals \one$.
-
-Let us compute the adjoint of the gradient operator. For all vector field $v \in A(G)$ it holds
+Let us compute the adjoint of the gradient operator. For all vector
+field $v \in A(G)$ it holds
 \begin{multline*}
-  \scalarat \theta {\nabla \phi}{b}  = \frac12 \sum_{xy \in E}
+  \scalarat \theta {\nabla \phi}{b}  = \frac12 \sum_{E(x,y)=1}
   \sqrt{\omega(x,y)} \theta(x,y) (\phi(x) - \phi(y)) b(x,y) = \\
   = \frac12 \sum_{x \in V} \sum_{y \in N(x)} \sqrt{\omega(x,y)}
   \theta(x,y) \phi(x)
 b(x,y) - \frac12 \sum_{x \in V} \sum_{y \in N(x)}
-  \sqrt{\omega_{yx}}  \theta_{yx} \phi(x) b(y,x) = \\ \sum_{x \in V} \left(\sum_{y \in N(x)} \sqrt{\omega(x,y)}  \theta(x,y) b(x,y) \right) \phi(x) =
+  \sqrt{\omega_{yx}}  \theta(y,x) \phi(x) b(y,x) = \\ \sum_{x \in V} \left(\sum_{y \in N(x)} \sqrt{\omega(x,y)}  \theta(x,y) b(x,y) \right) \phi(x) =
   \scalarof \phi {\Div(\theta b)} \ ,
 \end{multline*}
-where $N(x) = \setof{y}{xy \in E}$ and $\Div \colon A(G) \to \reals^V$ is defined by
+where $N(x) = \setof{y}{E(x,y)=1}$ and $\Div \colon A(G) \to \reals^V$ is defined by
 \begin{equation*}
   \Div w (x) = \sum_{y \in N(x)} \sqrt {\omega(x,y)} w(x,y) \ . 
 \end{equation*}
@@ -164,4 +164,5 @@ we obtain the equivalent problem
 
 In conclusion, the value of the problem is a squared Riemannian
 distance for the metric whose tensor is $L(\rho)^\dagger$
+
 \end{document}
