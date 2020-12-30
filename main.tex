@@ -32,13 +32,13 @@ characterised by their restriction on either $\overrightarrow E$ or
 $\overleftarrow E$.
 
 For each given weight $\theta$ on $G$, that is, $\theta(x,y) \geq 0$ and
-$\theta(x,y) = 0$ if $\omega(x,y) = 0$, we define the  inner product
+$\theta(x,y) = 0$ if $\omega(x,y) = 0$, we define the  inner product $\scalarat \theta \cdot \cdot$
 for $a,b \in M(G)$ by
 \begin{multline*}
-  \scalarat \theta a b = \frac 12 \sum _ {x,y \in V} \theta(x,y)
-  a(x,y) b(x,y) = \frac 12 \sum _ {xy \in E} \theta(x,y) a(x,y)
-  b(x,y) = \\ \sum_{xy \in \overrightarrow E} \theta(x,y)
-  \frac12(a(x,y)b(x,y)+a(y,x)b(y,x)) \ . 
+  \scalarat \theta a b = \frac 12 \sum _ {x,y \in V} 
+  a(x,y) b(x,y)\theta(x,y) = \frac 12 \sum _ {E(x,y)=1} a(x,y)
+  b(x,y)\theta(x,y) = \\ \sum_{xy \in \overrightarrow E} 
+  \frac12(a(x,y)b(x,y)+a(y,x)b(y,x)) \theta(x,y)\ . 
 \end{multline*}
 
 If $a$ and $b$ are either both symmetric, or both skew-symmetric, then
