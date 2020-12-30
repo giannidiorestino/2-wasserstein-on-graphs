@@ -1,0 +1,13 @@
+# Gradient and divergence on a Graph
+
+Let $G = (V,\Omega)$ be a weighted graph. The adjacency matrix $E$ splits
+(in many ways) into the sum of two adjacency matrices of directed
+graphs in such a way that $E = \overrightarrow E + \overleftarrow E$. Let
+$M(G)$ be the vector space of matrices whose support is contained in
+the support of $E$. Similarly, we define symmetric matrices $S(G)$ and
+skew-symmetric matrices $A(G)$. Both this special cases are
+characterised on either $\overrightarrow E$ or $\overleftarrow E$.
+
+If $\Theta$ is a weight on $G$, define the scalar product
+
+Let us call *potential* a mapping $\Phi \colon V \to \mathbb R$. 

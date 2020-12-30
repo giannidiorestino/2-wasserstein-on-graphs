@@ -1,0 +1,167 @@
+\documentclass[12pt,a4paper]{amsart}
+
+\usepackage{fullpage}
+\usepackage{macros}
+\usepackage{bm}
+
+% \usepackage[utf8]{inputenc}
+
+\title{2-Wasserstein on a graph}
+
+\author{Giovanni Pistone}
+\address{Collegio Carlo Alberto}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Gradient and divergence on a Graph}
+
+Let $G = (V,\omega)$ be a weighted simple connected graph, were
+$\omega$ is a zero-diagonal non-negative symmetric matrix. The
+adjacency matrix $E = [(\omega(x,y) > 0)]$ splits (in many ways) into
+the sum of two adjacency matrices of directed graphs on $V$ in such a
+way that $E = \overrightarrow E + \overleftarrow E$. Let $M(G)$ be the
+vector space of matrices whose support is contained in the support of
+$E$. Similarly, we define the space of symmetric matrices $S(G)$ and
+the space of skew-symmetric matrices $A(G)$. Elements of $A(G)$ are
+also called \emph{vector fields}. Both this special cases are uniquely
+characterised by their restriction on either $\overrightarrow E$ or
+$\overleftarrow E$.
+
+For each given weight $\theta$ on $G$, that is, $\theta(x,y) \geq 0$ and
+$\theta(x,y) = 0$ if $\omega(x,y) = 0$, we define the  inner product
+for $a,b \in M(G)$ by
+\begin{multline*}
+  \scalarat \theta a b = \frac 12 \sum _ {x,y \in V} \theta(x,y)
+  a(x,y) b(x,y) = \frac 12 \sum _ {xy \in E} \theta(x,y) a(x,y)
+  b(x,y) = \\ \sum_{xy \in \overrightarrow E} \theta(x,y)
+  \frac12(a(x,y)b(x,y)+a(y,x)b(y,x)) \ . 
+\end{multline*}
+
+If $a$ and $b$ are either both symmetric, or both skew-symmetric, then
+\begin{equation*}
+  \scalarat \theta a b = \sum_{xy \in \overrightarrow E} \theta(x,y)
+  a(x,y)b(x,y) \ .
+\end{equation*}
+If $a$ and $b$ are one symmetric and the other skew-symmetric, then
+\begin{equation*}
+  \scalarat \theta a b = 0 \ .
+\end{equation*}
+
+Let us call \emph{potential} a mapping $\Phi \colon V \to \reals$. We
+can map potentials into vector fields by the operation of
+\emph{$G$-gradient} $\nabla$ defined by,
+\begin{equation*}
+  \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y)) \ , \quad
+  x,y \in V \ .
+\end{equation*}
+The meaning of the square rooth will be explained later.
+
+As the graph $G$ is connected, it holds $\ker \nabla = \reals \one$.
+
+Let us compute the adjoint of the gradient operator. For all vector field $v \in A(G)$ it holds
+\begin{multline*}
+  \scalarat \theta {\nabla \phi}{b}  = \frac12 \sum_{xy \in E}
+  \sqrt{\omega(x,y)} \theta(x,y) (\phi(x) - \phi(y)) b(x,y) = \\
+  = \frac12 \sum_{x \in V} \sum_{y \in N(x)} \sqrt{\omega(x,y)}
+  \theta(x,y) \phi(x)
+b(x,y) - \frac12 \sum_{x \in V} \sum_{y \in N(x)}
+  \sqrt{\omega_{yx}}  \theta_{yx} \phi(x) b(y,x) = \\ \sum_{x \in V} \left(\sum_{y \in N(x)} \sqrt{\omega(x,y)}  \theta(x,y) b(x,y) \right) \phi(x) =
+  \scalarof \phi {\Div(\theta b)} \ ,
+\end{multline*}
+where $N(x) = \setof{y}{xy \in E}$ and $\Div \colon A(G) \to \reals^V$ is defined by
+\begin{equation*}
+  \Div w (x) = \sum_{y \in N(x)} \sqrt {\omega(x,y)} w(x,y) \ . 
+\end{equation*}
+
+It holds $\Div(\theta b) = 0$ if, and only if, $b$ is $\theta$-orthogonal to
+all vector fields of the form  $\nabla  \phi$. 
+
+\section{Laplacian and Hodge decomposition}
+\label{sec:laplacian}
+
+We define the following symmetric form on potentials:
+\begin{equation*}
+  \Scalarat \theta \phi \psi = \scalarat \theta {\nabla\phi}
+  {\nabla\Psi} = \scalarof {L\phi} \Psi \ , 
+\end{equation*}
+where $L(\theta) \phi = \Div(\theta\nabla\phi)$ and $L(\theta)$ is the
+\emph{Laplacian}.
+
+The kernel of the gradient operator is charaterised by
+\begin{equation*}
+  0 = \Scalarat \theta \phi \phi = \frac 12 \sum_{xy \in E} \omega(x,y)
+  (\phi(x) - \phi(y))^2 \theta(x,y) \ , 
+\end{equation*}
+that is, $\phi(x) = \phi(y)$ for all $x \in E$, that is, $\phi$ is
+constant. It follows that the symmetric form is a scalar product above
+on the space of sum-zero potentials, that is, on the affine space of
+the probability simplex on $V$.
+
+Let us study the image of the gradient operator in the space of vector
+fields. The vector field $w$ belongs to the  orthogonal of the image of
+$\nabla$ if, for all $\phi$,
+\begin{equation*}
+  0 = \scalarat \theta {\nabla \phi} w = \scalarof \phi {\Div(\theta
+    w)} \ ,
+\end{equation*}
+that is, if, and only if, $\Div(\theta W) = 0$. The following
+statement follow easily. It is sometimes called \emph{Hodge decomposition}.
+
+\emph{Every vector field $v \in A(G)$ admits the $\theta$-orthogonal
+  decomposition $v = \nabla \phi + w$, where $\phi$ is a potential
+  defined up to a constant and $\Div(\theta w) = 0$}
+
+Clearly, the decomposition depends on $\theta$
+
+\section{Continuity equation}
+\label{sec:continuity}
+
+Let $\theta$ be a smooth mapping from the probability simplex on $V$ to the
+cone of positive $S(G)$, $\theta \colon \rho \mapsto \theta(\rho) \in
+S_+(G)$. Given a regular curve $[0,1] \ni t \mapsto \Phi(t)$ in the
+space of zero-sum potentials, the ordinary differential equation
+\begin{equation*}
+  \derivby t \rho(t) +  \Div(\theta(\rho(t))\nabla \phi(t)) = 0 \ , \quad
+  \rho(0) = \rho^0 \in \mathcal P_+(V) \ ,
+\end{equation*}
+has a local solution in $\mathcal P_+(V)$ because
+\begin{equation*}
+  \derivby t \sum_x \rho(x;t) = \scalarof {\dot \rho(t)}{\one} = 
+ - \scalarof {\Div(\theta(\rho(t))\nabla \phi(t))}{1} = \scalarat
+ {\theta(\rho)} {\nabla \Phi(t)}{\nabla 1}
+ = 0 \ .
+\end{equation*}
+
+Given $\rho^0, \rho^1 \in \mathcal P_+(V)$, consider the value of the problem
+\begin{align*}
+ \inf &\int_0^1 \Scalarat {\theta(\rho(t))} {\phi(t)}{\phi(t)} \ dt
+ \\
+ &\derivby t \rho(t) +  \Div(\theta(\rho)\nabla \Phi(t)) = 0 \\
+ &\rho(0) = \rho^0 \ , \quad \rho(1) = \rho^1.
+\end{align*}
+
+Let us write $L(\rho)\Phi = \Div(\theta(\rho)\nabla \Phi)$ and
+consider that the conjugate of the quadratic form
+$\Scalarat {\theta(\rho)} \phi \phi = \frac 12 \scalarof {L(\rho)\phi}
+\psi$ is of the form
+\begin{equation*}
+  \frac 12 \scalarof {L(\rho)^\dagger \alpha} {\alpha} = \frac12 =
+  \scalarof {L(\rho)^\dagger L(\rho) \phi} {L(\rho)(\phi)} = \frac12
+  {L(\rho) \phi} \phi \ . 
+\end{equation*}
+
+Writing now $\Phi = L(\rho)^\dagger \dot \rho$ in the problem above,
+we obtain the equivalent problem
+\begin{align*}
+ \inf &\int_0^1 \scalarof {L(\rho(t))^\dagger \dot \rho(t)}{\dot \rho(t)} \ dt
+ \\
+ &\rho(0) = \rho^0 \ , \quad \rho(1) = \rho^1 \ .
+\end{align*}
+
+In conclusion, the value of the problem is a squared Riemannian
+distance for the metric whose tensor is $L(\rho)^\dagger$
+\end{document}
