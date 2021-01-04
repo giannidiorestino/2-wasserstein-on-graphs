@@ -127,8 +127,17 @@ E$ is the directed tree with root. In such a case, $N(x) = \set{x^+}
 1$ and $\overrightarrow E(x,y)=1$ if, and only if, $y \in F(x)$.
 
 \subsection*{Reversibility} An interesting case happens when $\theta$
-is a symmetric probability with margin $\rho$, so that
-$\frac{\theta(x,y)}{\rho(x)} = \theta(y | x)$, e.g. the conditional.
+can be extended to a probability function by adding diagonal values
+$\theta(x,x)$ and $\rho$ equals the two margins,
+\begin{equation*}
+  \rho(z) = \sum_y \theta(z,y) = \sum_x \theta(x,z) \ .
+\end{equation*}
+In such a case the conditional probability functions are reversible,
+\begin{equation*}
+  \theta_{2|1}(y|x) \rho(x) = \theta_{1|2}(x|y) \rho(y) = \theta(x,y) \ ,
+\end{equation*}
+and there is a reversible random walk on the graph.
+
 
 \section{Arens-Eells norms}
 
