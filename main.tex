@@ -121,14 +121,16 @@ In such a notation,
 \end{equation*}
 
 
-\subsection*{Example} Assume the graph is a tree and $\overrightarrow E$ is a
-directed tree with root.
+\subsection*{Example} Assume the graph is a tree and $\overrightarrow
+E$ is the directed tree with root. In such a case, $N(x) = \set{x^+}
+\cup F(x)$, where $F$ is the floret of $x$, that is, $\overrightarrow E(x^+,x) =
+1$ and $\overrightarrow E(x,y)=1$ if, and only if, $y \in F(x)$.
 
 \subsection*{Reversibility} An interesting case happens when $\theta$
 is a symmetric probability with margin $\rho$, so that
 $\frac{\theta(x,y)}{\rho(x)} = \theta(y | x)$, e.g. the conditional.
 
-\section{Arens-Eells norm}
+\section{Arens-Eells norms}
 
 Recall that we work with a weighted graph $G = (V,\omega)$ and we
 define duality pairing with the weights $\theta$ and $\rho$
@@ -185,8 +187,7 @@ Other analogous norms could be considered, for example,
 \sup\setof{\normof a _2}{\xi + \Div a = 0} \ .
 \end{equation*}
 
-This is a convex problem. 
-
+This is a convex problem to be studied. 
 
 \section{Laplacian and Hodge decomposition}
 \label{sec:laplacian}
@@ -194,36 +195,40 @@ This is a convex problem.
 We define the following symmetric form on potentials:
 \begin{equation*}
   \Scalarat \theta \phi \psi = \scalarat \theta {\nabla\phi}
-  {\nabla\psi} = \scalarof {L\phi} \Psi \ , 
+  {\nabla\psi} = \scalarat \rho  {A \phi} \psi \ , 
 \end{equation*}
-where $L(\theta) \phi = \Div(\theta\nabla\phi)$ and $L(\theta)$ is the
+where $A \phi = \nabla^* \nabla\phi$, that is,
+\begin{equation*}
+  A\phi(x) = \sum_{y \in N(x)} \omega(x,y) (\phi(x) - \phi(y))
+  \frac{\theta(x,y)}{\rho(x)} \ .
+\end{equation*}
+The operator $A$ is the
 \emph{Laplacian}.
 
-The kernel of the gradient operator is charaterised by
+The symmetric form is separating for non-constant potentials,
 \begin{equation*}
-  0 = \Scalarat \theta \phi \phi = \frac 12 \sum_{xy \in E} \omega(x,y)
+  0 = \Scalarat \theta \phi \phi = \sum_{xy \in E} \omega(x,y)
   (\phi(x) - \phi(y))^2 \theta(x,y) \ , 
 \end{equation*}
-that is, $\phi(x) = \phi(y)$ for all $x \in E$, that is, $\phi$ is
-constant. It follows that the symmetric form is a scalar product above
-on the space of sum-zero potentials, that is, on the affine space of
-the probability simplex on $V$.
+that is, $\phi(x) = \phi(y)$ for all $x,y \in E$. It follows that the
+symmetric form is a scalar product above on the space of sum-zero
+potentials, that is, on the affine space of the probability simplex on
+$V$. Same is true for each substace of codimension 1.
 
 Let us study the image of the gradient operator in the space of vector
 fields. The vector field $w$ belongs to the  orthogonal of the image of
 $\nabla$ if, for all $\phi$,
 \begin{equation*}
-  0 = \scalarat \theta {\nabla \phi} w = \scalarof \phi {\Div(\theta
-    w)} \ ,
+  0 = \scalarat \theta {\nabla \phi} w = \scalarat \rho \phi {\nabla^* w} \ ,
 \end{equation*}
-that is, if, and only if, $\Div(\theta W) = 0$. The following
+that is, if, and only if, $\nabla^* w  = 0$. The following
 statement follow easily. It is sometimes called \emph{Hodge decomposition}.
 
 \emph{Every vector field $v \in A(G)$ admits the $\theta$-orthogonal
   decomposition $v = \nabla \phi + w$, where $\phi$ is a potential
-  defined up to a constant and $\Div(\theta w) = 0$}
+  defined up to a constant and $\nabla^* w = 0$.}
 
-Clearly, the decomposition depends on $\theta$
+Clearly, the decomposition depends on $\theta$.
 
 \section{Continuity equation}
 \label{sec:continuity}
