@@ -1,10 +1,11 @@
 \documentclass[12pt,a4paper]{amsart}
 
-\usepackage{fullpage}
-\usepackage{macros}
-\usepackage{bm}
-\usepackage{hyperref}
 \usepackage[utf8]{inputenc}
+\usepackage{bm}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{macros}
+\usepackage{natbib}
 
 \usepackage{cleveref}
 
@@ -32,19 +33,20 @@
 
 We start with a review the well known formalism of
 \href{https://en.wikipedia.org/wiki/Calculus_on_finite_weighted_graphs}
-{Calculus on finite weighted graphs}.
+{Calculus on Finite Weighted Graphs}. See the Wiki and also
+\citep{bollobas:1998}.
 
 Let $G = (V,\omega)$ be a \emph{weighted simple connected graph}, were
-$\omega$ is a zero-diagonal non-negative symmetric matrix. The
-adjacency matrix $E = [(\omega(x,y) > 0)]$ splits (in many ways) into
-the sum of two adjacency matrices of directed graphs on $V$ in such a
-way that $E = \overrightarrow E + \overleftarrow E$. Let $L(G)$ be the
-vector space of matrices whose support is contained in the support of
-$E$. Similarly, we define the space of symmetric matrices $S(G)$ and
-the space of skew-symmetric matrices $A(G)$. Elements of $A(G)$ are
-also called \emph{vector fields} on $G$. Both this special cases are
-uniquely characterised by their restriction on either
-$\overrightarrow E$ or $\overleftarrow E$.
+$\omega$ is a zero-diagonal non-negative symmetric $V \times V$
+matrix. The adjacency matrix $E = [(\omega(x,y) > 0)]$ splits (in many
+ways) into the sum of two adjacency matrices of directed graphs on $V$
+in such a way that $E = \overrightarrow E + \overleftarrow E$. Let
+$L(G)$ be the vector space of $V \times V$ matrices whose support is
+contained in the support of $E$. Similarly, we define the space of
+symmetric matrices $S(G)$ and the space of skew-symmetric matrices
+$A(G)$. Elements of $A(G)$ are also called \emph{vector fields} on
+$G$. Both $S(G)$ and $A(G)$ are uniquely characterised by their
+restriction on either $\overrightarrow E$ or $\overleftarrow E$.
 
 For each given weight $\theta$ on $G$, that is, $\theta(x,y) \geq 0$,
 $\theta(x,y) = \theta(y,x)$, and $\theta(x,y) = 0$ whenever
@@ -286,5 +288,8 @@ we obtain the equivalent problem
 
 In conclusion, the value of the problem is a squared Riemannian
 distance for the metric whose tensor is $L(\rho)^\dagger$
+
+\bibliographystyle{plain}
+\bibliography{tutto}
 
 \end{document}
