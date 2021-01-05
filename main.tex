@@ -38,7 +38,10 @@ We start with a review the well known formalism of
 
 Let $G = (V,\omega)$ be a \emph{weighted simple connected graph}, were
 $\omega$ is a zero-diagonal non-negative symmetric $V \times V$
-matrix. The adjacency matrix $E = [(\omega(x,y) > 0)]$ splits (in many
+matrix. The weight $\omega$ is associated to a distance in a way to be
+discussed later.
+
+The adjacency matrix $E = [(\omega(x,y) > 0)]$ splits (in many
 ways) into the sum of two adjacency matrices of directed graphs on $V$
 in such a way that $E = \overrightarrow E + \overleftarrow E$. Let
 $L(G)$ be the vector space of $V \times V$ matrices whose support is
@@ -48,10 +51,9 @@ $A(G)$. Elements of $A(G)$ are also called \emph{vector fields} on
 $G$. Both $S(G)$ and $A(G)$ are uniquely characterised by their
 restriction on either $\overrightarrow E$ or $\overleftarrow E$.
 
-For each given weight $\theta$ on $G$, that is, $\theta(x,y) \geq 0$,
-$\theta(x,y) = \theta(y,x)$, and $\theta(x,y) = 0$ whenever
-$\omega(x,y) = 0$, we define the \emph{inner product}
-$\scalarat \theta \cdot \cdot$ for $a,b \in M(G)$ by
+For each given weight $\theta$ on $G$, that is, $\theta \in S(G)$ and
+$\theta(x,y) > 0$ if $E(x,y)=1$, we define the \emph{inner product}
+$\scalarat \theta \cdot \cdot$ for $a,b \in L(G)$ by
 \begin{multline*}
   \scalarat \theta a b = \frac 12 \sum _ {x,y \in V} a(x,y)
   b(x,y)\theta(x,y) = \frac 12 \sum _ {E(x,y)=1} a(x,y)
@@ -67,12 +69,13 @@ If $a$ and $b$ are either both symmetric, or both skew-symmetric, then
   a(x,y)b(x,y) \theta(x,y) \ .
 \end{equation}
 
-Let us call \emph{potential} a mapping $\Phi \colon V \to \reals$. We
-can map potentials into vector fields by the \emph{gradient} operation
-of \emph{$G$-gradient} $\nabla$, which is defined by
+In this section, let us call \emph{potential} a mapping
+$\phi \colon V \to \reals$, that is, $\phi\in L(G)$. We can map
+potentials into vector fields by the \emph{$G$-gradient} (or, simply,
+\emph{gradient}) $\nabla \colon L(G) \to A(G)$, which is defined by
 \begin{equation*}
-  \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y)) \ , \quad
-  x,y \in V \ .
+  \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y)) \quad
+  \text{for all} \quad x,y \in V \ .
 \end{equation*}
 The meaning of the square rooth will be explained later. As the graph
 $G$ is connected, it holds $\ker \nabla = \reals \one$, that is,
