@@ -73,25 +73,29 @@ In this section, let us call \emph{potential} a mapping
 $\phi \colon V \to \reals$, that is, $\phi\in L(G)$. We can map
 potentials into vector fields by the \emph{$G$-gradient} (or, simply,
 \emph{gradient}) $\nabla \colon L(G) \to A(G)$, which is defined by
-\begin{equation*}
+\begin{equation}\label{eq:nabla}
   \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y)) \quad
   \text{for all} \quad x,y \in V \ .
-\end{equation*}
-The meaning of the square rooth will be explained later. As the graph
-$G$ is connected, it holds $\ker \nabla = \reals \one$, that is,
-$\nabla\phi=0$ if, and only if, $\phi$ is constant. If
-$\omega(x,y) = d(x,y)^{-2}$ for a distance $d$ on $V$, then
+\end{equation}
+
+As the graph $G$ is connected, it holds $\ker \nabla = \reals \one$,
+that is, $\nabla\phi=0$ if, and only if, $\phi$ is constant.
+
+\subsection*{Graph distance} The meaning of the square rooth will be
+explained later. If $\omega(x,y) = d(x,y)^{-2}$ for a distance $d$ on
+$V$, then
 \begin{equation*}
   \nabla \phi (x,y)=\frac{\phi(x) - \phi(y)}{d(x,y)} \ .
 \end{equation*}
 
 Let $\rho$ be a positive weight on $V$ and use it to define an inner
-product on potentials, that is, consider $L^2(\rho)$. Le gradient
-operator maps this space to the space of vector fields $A(G)$ endowed
-with the inner product \eqref{eq:inner0}, $\nabla \colon L^2(\rho) \to A(G)$.
-Let us compute the adjoint $\nabla^* \colon A(G) \to L^2(\rho)$.
+product on potentials, that is, define $L^2(\rho)$. The gradient
+operator maps this space to the space of vector fields $A(\rho)$
+endowed with the inner product \eqref{eq:inner0},
+$\nabla \colon L^2(\rho) \to A(\rho)$.  Let us compute the adjoint
+$\nabla^* \colon A(\rho) \to L^2(\rho)$.
 
-Let $b$ be any vector field. We have from \cref{eq:inner0}
+Let $b$ be any vector field. We have from \cref{eq:inner0,eq:nabla} that
 \begin{multline*}
   \scalarat \theta {\nabla \phi}{b} = \sum_{\overrightarrow E(x,y)=1}
   \sqrt{\omega(x,y)}  (\phi(x) - \phi(y)) b(x,y) \theta(x,y) = \\
