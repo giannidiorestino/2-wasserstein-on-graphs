@@ -1,6 +1,7 @@
 \documentclass[12pt,a4paper]{amsart}
 
 \usepackage[utf8]{inputenc}
+\usepackage{amsthm}
 \usepackage{bm}
 \usepackage{fullpage}
 \usepackage{hyperref}
@@ -9,9 +10,13 @@
 
 \usepackage{cleveref}
 
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+
 \title{2-Wasserstein on a graph}
 
-\author{Giovanni Pistone} \address{de Castro Statistics, Collegio
+\author{Giovanni Pistone}
+\address{de Castro Statistics, Collegio
   Carlo Alberto, piazza Vincenzo Arbarello 8, Torino IT}
 
 \author{LM?}
@@ -81,12 +86,13 @@ potentials into vector fields by the \emph{$G$-gradient} (or, simply,
 As the graph $G$ is connected, it holds $\ker \nabla = \reals \one$,
 that is, $\nabla\phi=0$ if, and only if, $\phi$ is constant.
 
-\subsection*{Graph distance} The meaning of the square rooth will be
+\begin{example}[Graph distance] The meaning of the square rooth will be
 explained later. If $\omega(x,y) = d(x,y)^{-2}$ for a distance $d$ on
 $V$, then
 \begin{equation*}
   \nabla \phi (x,y)=\frac{\phi(x) - \phi(y)}{d(x,y)} \ .
 \end{equation*}
+\end{example}
 
 Let $\rho$ be a positive weight on $V$ and use it to define an inner
 product on potentials, that is, define $L^2(\rho)$. The gradient
@@ -111,31 +117,32 @@ Let $b$ be any vector field. We have from \cref{eq:inner0,eq:nabla} that
   \sum_{E(x,y)=1} \sqrt{\omega(x,y)}  \phi(x) b(x,y) \theta(x,y) = 
   \sum_{x \in V} \phi(x) \sum_{y \in N(x)}
   \sqrt{\omega(x,y)}  b(x,y) \theta(x,y) = \\
-  \sum_{x \in V} \left(\sum_{y \in N(x)}
-  \sqrt{\omega(x,y)}  b(x,y) \frac{\theta(x,y)}{\rho(x)} \right) \phi(x) \rho(x)
+  \sum_{x \in V} \left(\rho(x)^{-1} \sum_{y \in N(x)}
+  \sqrt{\omega(x,y)}  b(x,y) \theta(x,y) \right) \phi(x) \rho(x)
 \end{multline*}
 where $N(x) = \setof{y}{E(x,y)=1}$. In conclusion,
 \begin{equation*}
-  \nabla^* b(x) = \sum_{y \in N(x)}
-  \sqrt{\omega(x,y)}  b(x,y) \frac{\theta(x,y)}{\rho(x)} \ .
+  \nabla^* b(x) = \rho(x)^{-1} \sum_{y \in N(x)}
+  \sqrt{\omega(x,y)}  b(x,y) \theta(x,y) \ .
 \end{equation*}
 
-Some Authors call \emph{divergence} the operator defined on $L(G)$ by
+Some Authors call \emph{divergence} the operator defined on $A(G)$ by
 \begin{equation*}
   \Div f = - \sum_{y \in N(x)} f(x,y) \ .
 \end{equation*}
 In such a notation,
 \begin{equation*}
-  \nabla^* b = - \rho^{-1} \Div(\omega^{1/2} \theta f) \ . 
+  \nabla^* b = - \rho^{-1} \Div(\omega^{1/2} \theta b) \ . 
 \end{equation*}
 
 
-\subsection*{Trees} Assume the graph is a tree and $\overrightarrow
+\begin{example}[Trees] Assume the graph is a tree and $\overrightarrow
 E$ is the directed tree with root. In such a case, $N(x) = \set{x^+}
 \cup F(x)$, where $F$ is the floret of $x$, that is, $\overrightarrow E(x^+,x) =
 1$ and $\overrightarrow E(x,y)=1$ if, and only if, $y \in F(x)$.
+\end{example}
 
-\subsection*{Reversibility} An interesting case happens when $\theta$
+\begin{example}[Reversibility] An interesting case happens when $\theta$
 can be extended to a probability function by adding diagonal values
 $\theta(x,x)$ and $\rho$ equals the two margins,
 \begin{equation*}
@@ -146,18 +153,20 @@ In such a case the conditional probability functions are reversible,
   \theta_{2|1}(y|x) \rho(x) = \theta_{1|2}(x|y) \rho(y) = \theta(x,y) \ ,
 \end{equation*}
 and there is a reversible random walk on the graph.
-
+\end{example}
 
 \section{Arens-Eells norms}
 
 Recall that we work with a weighted graph $G = (V,\omega)$ and we
-define duality pairing with the weights $\theta$ and $\rho$
-despectively on the edge set $\mathcal E$ and the vertex set $V$.
+inner products with the weights $\theta$ and $\rho$ respectively on
+the edge set $\setof{\set{x,y}}{E(x,y)=1}$ and the vertex set $V$.
 
 Let $L(V)$ the space of real functions on $V$ (potentials in the
-previous section). Let $M_0(V)$ be the space of measures on $V$. As a
-vector space, $M_0(V)$ is a subspace for $L(V)$ of co-dimension
-1. Notice that $\phi \in L(V)$ and $\xi \in M_0(V)$ implies
+previous section). Let $M_0(V)$ be the space of zero-sum (measures)
+functions on $V$. Here we refer to
+\citep{montrucchio|pistone:2019-arXiv:1905.07547}. As a vector space,
+$M_0(V)$ is a subspace for $L(V)$ of co-dimension 1. Notice that
+$\phi \in L(V)$ and $\xi \in M_0(V)$ implies that for some $a$
 \begin{multline*}
   \xi(z) =
 \sum_{E(x,y)=1} a(x,y) (\delta_x(z) - \delta_y(z)) = \\
