@@ -184,18 +184,24 @@ and
   {\omega^{-1/2}\theta^{-1} a} {\nabla (\phi\cdot\rho)} =
   \scalarat \rho {\rho \nabla^* (\omega^{-1/2} \theta^{-1} a)} {\phi} .
 \end{multline*}
+In fact, $\phi\cdot\rho(u) = \sum_z \phi\cdot\rho(z) \delta_z(u)$ and,
+by linearity, $\nabla \phi\cdot\rho (x,y) = \sum_z \phi\cdot\rho(z)
+\nabla \delta_z(x,y)$.
 
-It follows that
-\begin{equation*}
-  \scalarat \rho \phi \xi = \scalarat {\omega^{-1/2}} {a} {\nabla (\phi\cdot\rho)}
-\end{equation*}
-and
+It follows that $\xi = \sum_{xy} a(x,y) (\delta_x-\delta_y)$ if, and
+only if,
 \begin{equation*}
   \xi(x) = \rho(x) \nabla^* (\omega^{-1/2} \theta^{-1} a) (x) = \sum_{y
-    \in N(x)}  a(x,y) = - \Div a \ . 
+    \in N(x)}  a(x,y) = - \Div a \ , 
+\end{equation*}
+that is, $\xi + \Div a = 0$. In such a case,
+\begin{equation*}
+  \scalarat \rho \phi \xi = \scalarat {\omega^{-1/2}} {a} {\nabla
+    (\phi\cdot\rho)} \ .
 \end{equation*}
 
-Now, the \emph{Arens-Eells} norm of $\xi$ is
+Now, the \emph{Arens-Eells} norm of $\xi$ is defined in
+\citep{montrucchio|pistone:2019-arXiv:1905.07547} as
 \begin{multline*}
   \sup\setof{\scalarat \rho \phi \xi}{\xi + \Div a = 0,
   -1 \leq \omega^{-1/2} \nabla(\phi\cdot\rho) \leq 1} = \\ \sup\setof{\sum
