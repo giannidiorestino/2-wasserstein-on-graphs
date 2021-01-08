@@ -75,22 +75,35 @@ If $a$ and $b$ are either both symmetric, or both skew-symmetric, then
 \end{equation}
 
 In this section, let us call \emph{potential} a mapping
-$\phi \colon V \to \reals$, that is, $\phi\in L(G)$. We can map
-potentials into vector fields by the \emph{$G$-gradient} (or, simply,
-\emph{gradient}) $\nabla \colon L(G) \to A(G)$, which is defined by
+$\phi \colon V \to \reals$, that is, $\phi\in L(V)$. We can linearly
+map potentials into vector fields by the \emph{$G$-gradient} (or,
+simply, \emph{gradient}) $\nabla \colon L(V) \to A(G)$, which is
+defined by
 \begin{equation}\label{eq:nabla}
-  \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y)) \quad
-  \text{for all} \quad x,y \in V \ .
+  \nabla \phi(x,y) = \sqrt {\omega(x,y)} (\phi(x) - \phi(y))
 \end{equation}
+for all $x,y$ such that $E(x,y)=1$, and is zero on all other
+couples. The meaning of the square rooth will be explained later.
 
 As the graph $G$ is connected, it holds $\ker \nabla = \reals \one$,
 that is, $\nabla\phi=0$ if, and only if, $\phi$ is constant.
 
-\begin{example}[Graph distance] The meaning of the square rooth will be
-explained later. If $\omega(x,y) = d(x,y)^{-2}$ for a distance $d$ on
-$V$, then
+\begin{example}[Graph distance] If $\omega(x,y) = d(x,y)^{-2}$ for a distance $d$ on
+$V$, and $d$ is a graph distance, then
 \begin{equation*}
   \nabla \phi (x,y)=\frac{\phi(x) - \phi(y)}{d(x,y)} \ .
+\end{equation*}
+Recall that, according to our definition, $\nabla \phi (x,y) = 0$ if
+the edge $(x,y)$ does not belong to the graph. However, the constant
+\begin{equation*}
+  K(\phi) = \sup_{E(x,y)=1} \nabla \phi(x,y)
+\end{equation*}
+is indeed the Lipsczitz constant of $\phi$ because every couple $x,y$
+is connected in the graph by a $d$-minimal path $x_0=x, \dots, x_n=y$
+and
+\begin{equation*}
+  \phi(x) - \phi(y) = \sum_{i=1}^n \phi(x_{i-1}) - \phi(x_i) \leq
+  \sum_{i=1}^n K(\phi) d(x_{i-1},x_i) = K(\phi) d(x,y) \ . 
 \end{equation*}
 \end{example}
 
@@ -98,8 +111,8 @@ Let $\rho$ be a positive weight on $V$ and use it to define an inner
 product on potentials, that is, define $L^2(\rho)$. The gradient
 operator maps this space to the space of vector fields $A(\rho)$
 endowed with the inner product \eqref{eq:inner0},
-$\nabla \colon L^2(\rho) \to A(\rho)$.  Let us compute the adjoint
-$\nabla^* \colon A(\rho) \to L^2(\rho)$.
+$\nabla \colon L^2(\rho) \to A(\theta)$.  Let us compute the adjoint
+$\nabla^* \colon A(\theta) \to L^2(\rho)$.
 
 Let $b$ be any vector field. We have from \cref{eq:inner0,eq:nabla} that
 \begin{multline*}
@@ -120,7 +133,8 @@ Let $b$ be any vector field. We have from \cref{eq:inner0,eq:nabla} that
   \sum_{x \in V} \left(\rho(x)^{-1} \sum_{y \in N(x)}
   \sqrt{\omega(x,y)}  b(x,y) \theta(x,y) \right) \phi(x) \rho(x)
 \end{multline*}
-where $N(x) = \setof{y}{E(x,y)=1}$. In conclusion,
+where $N(x) = \setof{y}{E(x,y)=1}$ is the $G$-neighborhood of $x$. In
+conclusion,
 \begin{equation*}
   \nabla^* b(x) = \rho(x)^{-1} \sum_{y \in N(x)}
   \sqrt{\omega(x,y)}  b(x,y) \theta(x,y) \ .
@@ -128,11 +142,11 @@ where $N(x) = \setof{y}{E(x,y)=1}$. In conclusion,
 
 Some Authors call \emph{divergence} the operator defined on $A(G)$ by
 \begin{equation*}
-  \Div f = - \sum_{y \in N(x)} f(x,y) \ .
+  \Div f = - \sum_{y \in N(x)} \sqrt{\omega(x,y)} f(x,y) \ .
 \end{equation*}
 In such a notation,
 \begin{equation*}
-  \nabla^* b = - \rho^{-1} \Div(\omega^{1/2} \theta b) \ . 
+  \nabla^* b = - \rho^{-1} \Div(\theta b) \ . 
 \end{equation*}
 
 
