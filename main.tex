@@ -12,6 +12,7 @@
 
 \theoremstyle{definition}
 \newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
 
 \title{2-Wasserstein on a graph}
 
@@ -140,7 +141,8 @@ conclusion,
   \sqrt{\omega(x,y)}  b(x,y) \theta(x,y) \ .
 \end{equation*}
 
-Some Authors call \emph{divergence} the operator defined on $A(G)$ by
+\begin{remark}
+  Some Authors call \emph{divergence} the operator defined on $A(G)$ by
 \begin{equation*}
   \Div f = - \sum_{y \in N(x)} \sqrt{\omega(x,y)} f(x,y) \ .
 \end{equation*}
@@ -149,11 +151,29 @@ In such a notation,
   \nabla^* b = - \rho^{-1} \Div(\theta b) \ . 
 \end{equation*}
 
+In the same spirit, the following operator is called \emph{Laplacian}:
+\begin{equation*}
+  \Delta \phi (x) = \Div \nabla \phi (x)= - \sum_{y \in N(x)}
+  \omega(x,y) (\phi(x)-\phi(y)) \ .
+\end{equation*}
+Notice that the weight $\omega$ is associated with the gradient
+operator, while the weights $\rho$ and $\theta$ are associated with
+the inner products. In specific applications of the formalim, some
+special relation between the weitghs could hold.
+\end{remark}
 
-\begin{example}[Trees] Assume the graph is a tree and $\overrightarrow
-E$ is the directed tree with root. In such a case, $N(x) = \set{x^+}
-\cup F(x)$, where $F$ is the floret of $x$, that is, $\overrightarrow E(x^+,x) =
-1$ and $\overrightarrow E(x,y)=1$ if, and only if, $y \in F(x)$.
+\begin{example}[Trees] Assume the graph is a tree and
+  $\overrightarrow E$ is the rooted directed tree. In such a case,
+  $N(x) = \set{x^+} \cup F(x)$, where $F$ is the floret of $x$, that
+  is, $\overrightarrow E(x^+,x) = 1$ if $x$ is not the root and
+  $\overrightarrow E(x,y)=1$ if, and only if, $y \in F(x)$. Every
+  directed edge is of the form $(x^+,x)$ and the value of the gradient
+  is $\sqrt{\omega(x^+,x)} (\phi(x^+) - \phi(x))$ for all non-root
+  $x$. Given any vector field $b \in A(G)$, its potential is
+  \begin{equation*}
+    \phi(x) = C - \sum_{y \in \gamma(x)} b(y^+,y) \ ,
+  \end{equation*}
+where $\gamma(x)$ is the unique path from the root to $x$.
 \end{example}
 
 \begin{example}[Reversibility] An interesting case happens when $\theta$
@@ -166,14 +186,15 @@ In such a case the conditional probability functions are reversible,
 \begin{equation*}
   \theta_{2|1}(y|x) \rho(x) = \theta_{1|2}(x|y) \rho(y) = \theta(x,y) \ ,
 \end{equation*}
-and there is a reversible random walk on the graph.
+and there is a reversible random walk on the graph. Morover, the
+operator $\nabla^*$ is a conditional expectation.
 \end{example}
 
 \section{Arens-Eells norms}
 
-Recall that we work with a weighted graph $G = (V,\omega)$ and we
-inner products with the weights $\theta$ and $\rho$ respectively on
-the edge set $\setof{\set{x,y}}{E(x,y)=1}$ and the vertex set $V$.
+Recall that we work with a weighted graph $G = (V,\omega)$ and with
+weights $\theta$ and $\rho$ respectively on the edge set
+$\setof{\set{x,y}}{E(x,y)=1}$ and the vertex set $V$.
 
 Let $L(V)$ the space of real functions on $V$ (potentials in the
 previous section). Let $M_0(V)$ be the space of zero-sum (measures)
@@ -187,7 +208,7 @@ combination, we see that a generating set is
   \setof{\delta_x-\delta_y}{\overrightarrow E(x,y)=1} \ .
 \end{equation*}
 
-If $\phi \in L(V)$ and $\xi \in M_0(V)$, for some $a \in L(G)$ it
+If $\phi \in L(V)$ and $\xi \in M_0(V)$, for some $a \in A(G)$ it
 holds that
 \begin{multline*}
   \xi(z) =
@@ -196,7 +217,7 @@ holds that
   \sum_{\overrightarrow E(x,y)=1} a(x,y) \omega(x,y)^{-1/2} \nabla
   \delta_z (x,y) \ ,
 \end{multline*}
-and
+so that
 \begin{multline*}
   \scalarat \rho \phi \xi = \sum_{z \in V} \phi(z)
   \left(\sum_{\overrightarrow E(x,y)=1}
@@ -208,9 +229,13 @@ and
   {\omega^{-1/2}\theta^{-1} a} {\nabla (\phi\cdot\rho)} = \scalarat
   \rho {\rho \nabla^* (\omega^{-1/2} \theta^{-1} a)} {\phi} .
 \end{multline*}
-In fact, $\phi\cdot\rho(u) = \sum_z \phi\cdot\rho(z) \delta_z(u)$ and,
-by linearity, $\nabla \phi\cdot\rho (x,y) = \sum_z \phi\cdot\rho(z)
-\nabla \delta_z(x,y)$.
+In fact, $(\phi\cdot\rho)(u) = \sum_z (\phi\cdot\rho)(z) \delta_z(u)$ and,
+by linearity,
+\begin{equation*}
+ \nabla (\phi\cdot\rho) (x,y) = \sum_z (\phi\cdot\rho)(z)
+\nabla \delta_z(x,y) \ .
+\end{equation*}
+
 
 It follows that $\xi = \sum_{xy} a(x,y) (\delta_x-\delta_y)$ if, and
 only if,
